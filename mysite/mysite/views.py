@@ -43,3 +43,6 @@ def hours_ahead_temp(request, offset):
 	## method 3
 	return HttpResponse(render_to_response("mytemplate.html", locals()))
 
+def form_get(request):
+	parameter = request.GET.get('q', '')
+	return render_to_response('form_get.html', locals())

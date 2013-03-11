@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 # Create your models here.
 class Publisher(models.Model):
@@ -15,15 +16,24 @@ class Publisher(models.Model):
 	class Meta:
 		ordering = ["name"]
 
+
 class Author(models.Model):
 	salutation = models.CharField(max_length=10)
 	first_name = models.CharField(max_length=30)
 	last_name = models.CharField(max_length=40)
 	email = models.EmailField()
-	headshot = models.ImageField(upload_to="/tmp")
+	headshot = models.ImageField(upload_to="./books/tmp")
 
 	def __str__(self):
 		return '%s %s' % (self.first_name, self.last_name)
+
+
+class AuthorAdmin(admin.ModelAdmin):
+	list_display = ('salutation', 'first_name', 'last_name')
+	# list_filter = ('first_name', 'last_name')
+	# ordering = ('-salutation',)
+	# search_fields = ('salutation',)
+
 
 class Book(models.Model):
 	title = models.CharField(max_length=100)
@@ -33,4 +43,7 @@ class Book(models.Model):
 
 	def __str__(self):
 		return self.title
+
+admin.site.register([Publisher, Book])
+admin.site.register(Author, AuthorAdmin)
 
