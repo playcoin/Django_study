@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>User informations</title>
+	</head>
+	<body>
+		<ul>
+		{% for object in objects %}
+			<li>{{ forloop.couter1}}, {{object}}</li>			
+		{% endfor %}	
+		</ul>
+		
+	</body>
+</html>
