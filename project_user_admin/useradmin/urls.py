@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import ListView, DetailView
 from userinfo.models import UserInfo
-from userinfo.views import UserInfoCreate, UserInfoUpdate, UserInfoDelete
+from userinfo.views import UserInfoCreate, UserInfoUpdate, UserInfoDelete, UserInfoList
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -18,12 +18,14 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', 
-    	ListView.as_view(
-    		queryset=UserInfo.objects.all(),
-    		template_name="user_list.html"),
-    	name='index'),
+    # url(r'^$', 
+    # 	ListView.as_view(
+    # 		queryset=UserInfo.objects.all(),
+    # 		template_name="user_list.html"),
+    # 	name='index'),
 
-    url(r'^add$', UserInfoCreate.as_view(), name="user_add"),
+    url(r'^$', UserInfoList.as_view(), name="index"),
+    url(r'^add/$', UserInfoCreate.as_view(), name="user_add"),
+    url(r'^edit/(?P<pk>\d+)$', UserInfoUpdate.as_view(), name="user_edit"),
     url(r'^delete/(?P<pk>\d+)$', UserInfoDelete.as_view(), name="user_add"),
 )

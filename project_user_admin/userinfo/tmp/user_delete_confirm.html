@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block b_title %}Delete User{% endblock %}
+{% block b_page_title %}Delete User{% endblock %}
+
+{% block b_main %}
+	<form action="" method='post'>{% csrf_token %}
+		{{ form.as_p }}	
+		<input type="submit" value="确认删除">
+	</form>	
+{% endblock %}
