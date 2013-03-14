@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import ListView, DetailView
 from userinfo.models import UserInfo
-from userinfo.views import UserInfoCreate, UserInfoUpdate, UserInfoDelete, UserInfoList
+from userinfo.views import UserInfoCreate, UserInfoUpdate, UserInfoDelete, UserInfoList, GreetingView
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -28,4 +28,6 @@ urlpatterns = patterns('',
     url(r'^add/$', UserInfoCreate.as_view(), name="user_add"),
     url(r'^edit/(?P<pk>\d+)$', UserInfoUpdate.as_view(), name="user_edit"),
     url(r'^delete/(?P<pk>\d+)$', UserInfoDelete.as_view(), name="user_add"),
+
+    url(r'^greet', GreetingView.as_view())
 )
