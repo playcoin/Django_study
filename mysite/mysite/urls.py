@@ -14,7 +14,6 @@ urlpatterns = patterns('',
     (r'^time/$', current_datetime_temp),
     (r'^time/plus/(\d{1,2})/$', hours_ahead_temp),
     (r'^form', form_get),
-    (r'^static$', 'static.html'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
